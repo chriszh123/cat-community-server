@@ -24,6 +24,7 @@ public class Application {
 
     @RequestMapping("/")
     String index() {
+        // test
         return "index";
     }
 }

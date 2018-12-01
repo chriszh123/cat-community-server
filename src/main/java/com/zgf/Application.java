@@ -1,5 +1,5 @@
 
-package com.codedrinker;
+package com.zgf;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -9,7 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
- * Created by codedrinker on 2018/11/16.
+ * Created by zgf on 2018/11/16.
  */
 
 @Controller

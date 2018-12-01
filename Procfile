@@ -1,0 +1,1 @@
+web: java -jar -Dspring.profiles.active=production target/cat-community-server-0.0.1.jar

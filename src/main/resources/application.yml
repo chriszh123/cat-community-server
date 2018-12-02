@@ -12,3 +12,8 @@ wechat:
   appid: wx7277976cd1ab9064
   secret: 12578862f37e5714b08e1125a4cc280c
 
+db:
+  url: jdbc:h2:~/zgf
+  username: sa
+  password: sa
+  driver: org.h2.Driver

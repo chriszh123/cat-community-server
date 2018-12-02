@@ -28,11 +28,12 @@ public class WechatAdapterServiceImpl implements WechatAdapterService {
     @Override
     public SessionDTO jscode2session(String code) {
         try {
-            String url = Constant.URL;
+            String url = "https://api.weixin.qq.com/sns/jscode2session?appid=%s&secret=%s&js_code=%s&grant_type=authorization_code";
             OkHttpClient okHttpClient = new OkHttpClient();
             Request request = new Request.Builder()
                     .addHeader("content-type", "application/json")
-                    .url(String.format(url, appid, secret, code))
+                    .url(String.format(url, "wx7277976cd1ab9064",
+                            "b854a7ab20934902d5ccf9b6a4aac0f4", code))
                     .build();
             Response response = okHttpClient.newCall(request).execute();
             if (response.isSuccessful()) {

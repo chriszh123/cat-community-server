@@ -1,6 +1,6 @@
 {
-  "name": "jiuask-server",
-  "description": "jiuask-server",
+  "name": "cat-community-server",
+  "description": "cat-community-server",
   "addons": [
     "cleardb:ignite"
   ]

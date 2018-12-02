@@ -29,7 +29,6 @@ public class UserServiceImpl implements UserService {
         if (CollectionUtils.isEmpty(users)) {
             user.setGmtCreate(System.currentTimeMillis());
             user.setGmtModified(System.currentTimeMillis());
-            user.setIsDeleted(false);
             this.userMapper.insert(user);
         } else {
             user.setGmtModified(System.currentTimeMillis());

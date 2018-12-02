@@ -19,8 +19,6 @@ public class User {
 
     private Byte status;
 
-    private Boolean isDeleted;
-
     public Integer getId() {
         return id;
     }
@@ -91,13 +89,5 @@ public class User {
 
     public void setStatus(Byte status) {
         this.status = status;
-    }
-
-    public Boolean getIsDeleted() {
-        return isDeleted;
-    }
-
-    public void setIsDeleted(Boolean isDeleted) {
-        this.isDeleted = isDeleted;
     }
 }

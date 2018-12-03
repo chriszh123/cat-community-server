@@ -27,19 +27,17 @@ public class WechatAdapterServiceImpl implements WechatAdapterService {
 
     @Override
     public SessionDTO jscode2session(String code) {
+        String url = "https://api.weixin.qq.com/sns/jscode2session?appid=%s&secret=%s&js_code=%s&grant_type=authorization_code";
+        OkHttpClient okHttpClient = new OkHttpClient();
+        Request request = new Request.Builder()
+                .addHeader("content-type", "application/json")
+                .url(String.format(url, appid, secret, code))
+                .build();
         try {
-            String url = "https://api.weixin.qq.com/sns/jscode2session?appid=%s&secret=%s&js_code=%s&grant_type=authorization_code";
-            OkHttpClient okHttpClient = new OkHttpClient();
-            Request request = new Request.Builder()
-                    .addHeader("content-type", "application/json")
-                    .url(String.format(url, "wx7277976cd1ab9064",
-                            "b854a7ab20934902d5ccf9b6a4aac0f4", code))
-                    .build();
             Response response = okHttpClient.newCall(request).execute();
             if (response.isSuccessful()) {
-                SessionDTO sessionDTO = JSONObject.parseObject(response.body().toString(), SessionDTO.class);
-                logger.info("jscode2session get url -> {}, info -> {}", String.format(url, appid, secret, code),
-                        JSON.toJSONString(sessionDTO));
+                SessionDTO sessionDTO = JSON.parseObject(response.body().string(), SessionDTO.class);
+                logger.info("jscode2session get url -> {}, info -> {}", String.format(url, appid, secret, code), JSON.toJSONString(sessionDTO));
                 return sessionDTO;
             } else {
                 logger.error("jscode2session authorize error -> {}", code);

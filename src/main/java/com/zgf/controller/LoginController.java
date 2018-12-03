@@ -1,7 +1,6 @@
 package com.zgf.controller;
 
 import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONObject;
 import com.zgf.dto.LoginDTO;
 import com.zgf.dto.ResultDTO;
 import com.zgf.dto.SessionDTO;
@@ -10,7 +9,6 @@ import com.zgf.error.CommonErrorCode;
 import com.zgf.error.ErrorCodeException;
 import com.zgf.model.User;
 import com.zgf.service.UserService;
-import com.zgf.service.WechatAdapter;
 import com.zgf.service.WechatAdapterService;
 import com.zgf.util.DigestUtil;
 import lombok.extern.slf4j.Slf4j;
@@ -28,9 +26,6 @@ import java.util.UUID;
 @RestController
 @Slf4j
 public class LoginController {
-
-    //    @Autowired
-//    private WechatAdapter wechatAdapter;
 
     @Autowired
     private WechatAdapterService wechatAdapterService;

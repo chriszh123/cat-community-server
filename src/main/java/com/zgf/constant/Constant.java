@@ -6,5 +6,4 @@ package com.zgf.constant;
  * Description
  */
 public class Constant {
-    public static final String URL = "https://api.weixin.qq.com/sns/jscode2session?appid=%s&secret=%s&js_code=%s&grant_type=authorization_code";
 }

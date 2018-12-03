@@ -1,12 +1,14 @@
 package com.zgf.controller;
 
+import com.alibaba.fastjson.JSON;
 import com.zgf.dto.LoginDTO;
 import com.zgf.dto.ResultDTO;
 import com.zgf.dto.SessionDTO;
 import com.zgf.dto.TokenDTO;
 import com.zgf.error.CommonErrorCode;
 import com.zgf.error.ErrorCodeException;
-import com.zgf.service.WechatAdapter;
+import com.zgf.model.User;
+import com.zgf.service.UserService;
 import com.zgf.service.WechatAdapterService;
 import com.zgf.util.DigestUtil;
 import lombok.extern.slf4j.Slf4j;
@@ -28,8 +30,8 @@ public class LoginController {
     @Autowired
     private WechatAdapterService wechatAdapterService;
 
-//    @Autowired
-//    private WechatAdapter wechatAdapter;
+    @Autowired
+    private UserService userService;
 
     // 定义 domain/api/login 访问接口，用于实现登录
     // 使用 LoginDTO 自动解析传递过来的 JSON 数据
@@ -42,10 +44,16 @@ public class LoginController {
             log.info("login get session : {}", sessionDTO);
             // 检验传递过来的使用户信息是否合法
             DigestUtil.checkDigest(loginDTO.getRawData(), sessionDTO.getSessionKey(), loginDTO.getSignature());
-            //TODO: 储存 token
-            //生成token，用于自定义登录态，这里的存储逻辑比较复杂，放到下一讲
+
+            String token = UUID.randomUUID().toString();
+            User user = JSON.parseObject(loginDTO.getRawData(), User.class);
+            user.setToken(token);
+            user.setOpenid(sessionDTO.getOpenid());
+            this.userService.saveOrUpdate(user);
+
+            //生成token，用于自定义登录态
             TokenDTO data = new TokenDTO();
-            data.setToken(UUID.randomUUID().toString());
+            data.setToken(token);
             return ResultDTO.ok(data);
         } catch (ErrorCodeException e) {
             log.error("login error, info : {}", loginDTO, e.getMessage());

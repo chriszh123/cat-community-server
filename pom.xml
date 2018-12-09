@@ -104,6 +104,20 @@
             <version>1.3.0</version>
         </dependency>
 
+        <!--Apache 工具包-->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>3.8.1</version>
+        </dependency>
+
+        <!--MySQL 依赖-->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>5.1.41</version>
+        </dependency>
+
     </dependencies>
     <build>
         <plugins>

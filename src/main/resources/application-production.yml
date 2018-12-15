@@ -6,8 +6,14 @@ logging:
     org:
       springframework: error
 server:
-  port: ${PORT:5000}
+  port: ${port:8888}
 
 wechat:
-  appid: ${WECHAT_APPID}
-  secret: ${WECHAT_SECRET}
+  appid: wx7277976cd1ab9064
+  secret: b854a7ab20934902d5ccf9b6a4aac0f4
+
+db:
+  url: jdbc:h2:~/zgf
+  username: sa
+  password: sa
+  driver: org.h2.Driver

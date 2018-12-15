@@ -35,4 +35,14 @@ public class UserServiceImpl implements UserService {
             this.userMapper.updateByExampleSelective(user, example);
         }
     }
+
+    public User getByToken(String token) {
+        UserExample userExample = new UserExample();
+        userExample.createCriteria().andTokenEqualTo(token);
+        List<User> users = userMapper.selectByExample(userExample);
+        if (users != null && users.size() != 0) {
+            return users.get(0);
+        }
+        return null;
+    }
 }

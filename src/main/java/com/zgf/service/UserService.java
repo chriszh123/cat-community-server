@@ -9,4 +9,6 @@ import com.zgf.model.User;
  */
 public interface UserService {
     void saveOrUpdate(User user);
+
+    User getByToken(String token);
 }

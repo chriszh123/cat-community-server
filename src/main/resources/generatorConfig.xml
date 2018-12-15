@@ -7,10 +7,11 @@
     <!--这个是依赖的路径，记得替换成自己的-->
     <!--<classPathEntry location="/Users/codedrinker/.m2/repository/com/h2database/h2/1.4.196/h2-1.4.196.jar"/>-->
     <classPathEntry
-            location="D:/tools/maven/apache-maven-3.5.2-origin/localRepo/com/h2database/h2/1.4.196/h2-1.4.196.jar"/>
+            location="D:/tools/maven/apache-maven-3.5.2-xcx/localRepo/com/h2database/h2/1.4.196/h2-1.4.196.jar"/>
 
     <context id="table" targetRuntime="MyBatis3">
         <plugin type="org.mybatis.generator.plugins.UnmergeableXmlMappersPlugin"></plugin>
+        <plugin type="org.mybatis.generator.plugins.RowBoundsPlugin"></plugin>
         <commentGenerator>
             <property name="suppressAllComments" value="true"></property>
         </commentGenerator>
@@ -38,6 +39,10 @@
         </javaClientGenerator>
 
         <table tableName="user" domainObjectName="User">
+            <property name="useActualColumnNames" value="false"/>
+        </table>
+
+        <table tableName="question" domainObjectName="Question">
             <property name="useActualColumnNames" value="false"/>
         </table>
     </context>
